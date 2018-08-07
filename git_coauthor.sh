@@ -1,4 +1,9 @@
 #!/bin/bash
+#
+# A git porcelain to add co-authored-by trailers to git commits
+# and manage a database of authors.
+#
+# I live at https://github.com/simoleone/git-coauthor
 
 readonly COMMIT_TEMPLATE="${HOME}/.git_coauthor_commit_template"
 
