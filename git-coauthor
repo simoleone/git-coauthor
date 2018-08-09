@@ -82,7 +82,7 @@ function solo() {
 }
 
 function display_current() {
-  local -r authors="$(cat "${COMMIT_TEMPLATE}" | grep 'Co-authored-by:' | cut -d':' -f2)"
+  local -r authors="$(grep 'Co-authored-by:' "${COMMIT_TEMPLATE}" 2>/dev/null | cut -d':' -f2)"
   echo "CURRENT CO-AUTHORS"
   if [[ -z "${authors}" ]]; then
     echo "You're committing solo!"
