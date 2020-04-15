@@ -22,7 +22,7 @@ function author_delete() {
   local full_author
   full_author="$(author_match "${query}")"
   [[ $? -eq 0 ]] || { err "no authors deleted" && return 1; }
-  git config --global --unset coauthor.author "${full_author}"
+  git config --global --unset-all coauthor.author "${full_author}"
 }
 
 function author_list() {
