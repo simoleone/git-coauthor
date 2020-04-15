@@ -13,6 +13,12 @@ function err() {
 
 function author_create() {
   local -r author="$1"
+
+  if author_exact_match "${author}"; then
+    err "author already exists"
+    return 1
+  fi
+
   git config --global --add coauthor.author "${author}"
 }
 
@@ -27,6 +33,14 @@ function author_delete() {
 
 function author_list() {
   git config --global --get-all coauthor.author
+}
+
+function author_exact_match() {
+  local -r query="$1"
+
+  author_list | grep -i -m 1 -E "^${query}$"
+
+  return $?
 }
 
 function author_match() {
