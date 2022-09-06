@@ -72,8 +72,6 @@ function author_match() {
 function setup_pair() {
   local commit_template
 
-  [[ "$#" -lt 2 ]] && { err "need at least two authors to pair!" && return 1; }
-
   commit_template=""
   for i in "$@"; do
     local full_author
